@@ -2,6 +2,8 @@
 
 *[Qvik](http://qvik.fi/)'s official Swift programming language / Swift iOS project guide. This document is used as the basis for any code reviewing and pull request acceptance. For the Swift language specification, see [Apple's The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)*
 
+[![Visit Qvik's webpage](http://qvik.fi/wp-content/uploads/2015/02/qvik_logo_black_210x120.png)](http://qvik.fi/)
+
 ## Table of Contents
 
 1. [Indentation](#indentation)
