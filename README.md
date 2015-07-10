@@ -15,6 +15,7 @@
 	* [Enumerations](#enumerations)
 	* [Methods](#methods)
 	* [Extensions](#extensions)
+	* [IBOutlets](#iboutlets)
 	* [Closures](#closures)
 4. [Access modifiers](#access-modifiers)
 5. [Computed properties](#computed-properties)
