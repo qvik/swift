@@ -47,7 +47,7 @@ Use Swift's 'native' data types:
 let badString: NSString = "foo bar"
 
 // Good
-let goodString = "foo bar
+let goodString = "foo bar"
 ```
 
 ## Naming conventions
@@ -61,9 +61,11 @@ let okSoICouldntReallyComeUpWithADescriptiveName = "sigh"
 class FactoryFactoryBuilderDelegateProxyPattern {}
 
 // Good
-var customerName: String? = nil
+var customerName: String?
 let baseUrl = "http://www.example.com/"
 ```
+
+Always use US English for identifier names instead of UK English; ie. never write **colour** instead of **color** etc.
 
 ## Variables
 
@@ -77,7 +79,7 @@ All variables are named in camelCase:
 var something_Nasty = 666
 
 // Good
-let properVariableName = 123
+let properName = 123
 ```
 
 
@@ -116,6 +118,12 @@ enum Fruit {
   case Melon
   case Apple
 }
+```
+
+Use the shorthand expression (when possible) when dealing with enumerations:
+
+```swift
+picnicBasket.fruit = .Apple
 ```
 
 ## Methods
@@ -412,9 +420,9 @@ Launchscreen.xib
 
 ### Services
 
-Place your *"service"* and *"manager"* classes here. Generally use a singleton instance for both *service* and *manager* classes.
+Place your *service* and *manager* classes here. Generally use a singleton instance for both *service* and *manager* classes.
 
-An example of an *"service*" class is a class that provides an API to an external *service*, such as a database or a remote backend. A *service* class must not contain any state except what is required for the service access, such as credentials. A *service* class must be re-entrant (threadsafe). Suffix your *service* class names with *Service*, eg. *RemoteService*. 
+An example of an *service* class is a class that provides an API to an external *service*, such as a database or a remote backend. A *service* class must not contain any state except what is required for the service access, such as credentials. A *service* class must be re-entrant (threadsafe). Suffix your *service* class names with *Service*, eg. *RemoteService*. 
 
 A *manager* class is something that manages a resource, for example filesystem entries or a cache. *Manager* classes may hold state, but should be re-entrant. Suffix your *manager* class names with *Manager*.
 
@@ -439,7 +447,7 @@ If creating subclasses of UIKit view controls, place them here.
 
 ### Utils
 
-Put any source files containing global functions and extensions here.
+Put any source files containing global functions and [extensions]((https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html) here.
 
 ### View controllers
 
