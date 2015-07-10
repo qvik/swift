@@ -39,6 +39,8 @@
 
 Always use 4 spaces for indentation. Never use tabs.
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Types
 
 Use Swift's 'native' data types:
@@ -50,6 +52,8 @@ let badString: NSString = "foo bar"
 // Good
 let goodString = "foo bar"
 ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Naming conventions
 
@@ -68,6 +72,8 @@ let baseUrl = "http://www.example.com/"
 
 Always use US English for identifier names instead of UK English; ie. never write **colour** instead of **color** etc.
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Variables
 
 Always use **let** instead of **var** for immutability when possible.
@@ -83,6 +89,7 @@ var something_Nasty = 666
 let properName = 123
 ```
 
+**[⬆ back to top](#table-of-contents)**
 
 ## Constants
 
@@ -96,6 +103,8 @@ let SOME_CONSTANT = "value"
 let someConstants = "value"
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Classes
 
 Classes are named with the first letter of each word capitalized. Class names are not prefixed like sometimes in Objective-C. Do not inherit NSObject unless you absolutely have to.
@@ -108,6 +117,7 @@ class XYZWebInterface {}
 // Good
 class AppModel {}
 ```
+**[⬆ back to top](#table-of-contents)**
 
 ## Enumerations
 
@@ -126,6 +136,8 @@ Use the shorthand expression (when possible) when dealing with enumerations:
 ```swift
 picnicBasket.fruit = .Apple
 ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Methods
 
@@ -151,6 +163,7 @@ sendEmail(recipient: recipient, body: body)
 reverseString(myString)
 ```
 
+**[⬆ back to top](#table-of-contents)**
 
 ## Extensions
 
@@ -160,6 +173,9 @@ When writing [extensions](https://developer.apple.com/library/prerelease/ios/doc
 UIViewExtensions
 StringExtensions
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
 ## IBOutlets
 
 Name your IBOutlet variables in a way that the name includes the type of the control; this is to distinguish them from other class variables. Also always use implicit unwrapping to catch missing outlet bindings immediately by having the app crash. Also always flag your outlets **weak**.
@@ -173,6 +189,8 @@ Name your IBOutlet variables in a way that the name includes the type of the con
 @IBOutlet weak var customerImageView: UIImageView!
 @IBOutlet weak var nameLabel: UILabel!
 ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Closures
 
@@ -195,9 +213,13 @@ cell.update(loginCallback: { [weak self] in
 })
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Access modifiers
 
 Manage your classes' [Access control](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html) properly. Always use **private** for class internal data and methods. Always use **public** for any methods you intend to export from your module.
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Computed properties
 
@@ -216,6 +238,8 @@ var area: Double {
 	return x * y
 }
 ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Braces
 
@@ -238,6 +262,8 @@ if something {
 }
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Optionals
 
 Pay attention to how you unwrap your optionals. Whenever it may be expected an optional holds a nil value, use [Optional Chaining](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/OptionalChaining.html):
@@ -259,6 +285,8 @@ if let error = error {
 	...
 }
 ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Singletons
 
@@ -291,6 +319,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	...
 }
 ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Misc things
 
@@ -335,6 +365,8 @@ let bar = (foo == nil) ? "default" : foo
 let bar = foo ?? "default"
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Shorthands
 
 Avoid using closure argument shorthands (**$0, $1, ..**) unless their meaning to the closure is unambiguous.
@@ -357,6 +389,8 @@ var foo: String? {
 }
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Tuples
 
 In class-internal communication it is encouraged to use flexible tuples for complex types instead of implementing a named type (class or struct). In most cases, use named tuples for clarity.
@@ -369,6 +403,8 @@ menuItems = [("menu_icon_card", "sidemenu-loyaltyBenefits", true),
 ```
 
 For public APIs, prefer returning objects of declared types instead, or at least use a typealias for your tuple.
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Comments
 
@@ -411,6 +447,8 @@ class SomeClass {
 ```
 
 Always start your comment with a capital letter and separate it from the comment marker with a single whitespace as such: **// This is a nicely written comment**.
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Project structure
 
@@ -467,3 +505,4 @@ Put any source files containing global functions and [extensions]((https://devel
 
 Create a subgroup for each view. Place any related .xib files and their implementation files to the same subgroup as the view controller that uses them. If reusing .xibs in several views, create a group called *Common* for them.
 
+**[⬆ back to top](#table-of-contents)**
