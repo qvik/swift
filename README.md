@@ -159,6 +159,19 @@ When writing [extensions](https://developer.apple.com/library/prerelease/ios/doc
 UIViewExtensions
 StringExtensions
 ```
+## IBOutlets
+
+Name your IBOutlet variables in a way that the name includes the type of the control; this is to distinguish them from other class variables. Also always use implicit unwrapping to catch missing outlet bindings immediately by having the app crash. Also always flag your outlets **weak**.
+
+```swift
+// Bad 
+@IBOutlet var image: UIImageView?
+@IBOutlet var name: UILabel?
+
+// Good
+@IBOutlet weak var customerImageView: UIImageView!
+@IBOutlet weak var nameLabel: UILabel!
+```
 
 ## Closures
 
