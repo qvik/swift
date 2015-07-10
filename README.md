@@ -20,6 +20,8 @@
 7. [Optionals](#optionals)
 8. [Singletons](#singletons)
 9. [Misc things](#misc-things)
+10. [Shorthands](#shorthands)
+11. [Tuples](#tuples)
 5. [Comments](#comments)
 6. [Project structure](#project-structure)
 	* [Services](#services)
@@ -291,6 +293,58 @@ var fruits: [String] = []
 let message = "Hello, world"
 var fruits = [String]()
 ```
+
+Use the **??** shorthand operator for nil-comparisons:
+
+```swift
+// Bad 
+if foo == nil {
+	bar = "default"
+} else {
+	bar = foo
+}
+
+// Bad 
+let bar = (foo == nil) ? "default" : foo
+
+// Good
+let bar = foo ?? "default"
+```
+
+## Shorthands
+
+Avoid using closure argument shorthands (**$0, $1, ..**) unless their meaning to the closure is unambiguous.
+
+Always use shorthands for computed properties:
+
+```swift
+// Bad 
+var foo: String? {
+	set(newFoo) {
+    	data.foo = newFoo
+    }
+}
+
+// Good
+var foo: String? {
+	set {
+    	data.foo = newValue
+    }
+}
+```
+
+## Tuples
+
+In class-internal communication it is encouraged to use flexible tuples for complex types instead of implementing a named type (class or struct). In most cases, use named tuples for clarity.
+
+```swift
+var menuItems: [(icon: String, text: String, bg: Bool)] = []
+// ... 
+menuItems = [("menu_icon_card", "sidemenu-loyaltyBenefits", true),
+            ("menu_icon_home", "sidemenu-home", false)]
+```
+
+For public APIs, prefer returning objects of declared types instead, or at least use a typealias for your tuple.
 
 ## Comments
 
