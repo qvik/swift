@@ -32,6 +32,8 @@
 	* [Custom controls](#custom-controls)
 	* [Utils](#utils)
 	* [View controllers](#view-controllers)
+	* [Resources](#resources)
+		
 	
 
 
@@ -115,7 +117,7 @@ class word_processor {}
 class XYZWebInterface {}
 
 // Good
-class AppModel {}
+class AppState {}
 ```
 **[⬆ back to top](#table-of-contents)**
 
@@ -312,7 +314,7 @@ import XCGLogger
 
 let log = XCGLogger.defaultInstance()
 let remote = RemoteService.sharedInstance()
-let appmodel = AppModel.sharedInstance()
+let appstate = AppState.sharedInstance()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -450,6 +452,14 @@ Always start your comment with a capital letter and separate it from the comment
 
 **[⬆ back to top](#table-of-contents)**
 
+## Localization
+
+Handle localization (internalization) for UI elements by using Storyboard / .xib localization strings file. Do not put *NSLocalizedString()* calls into code for UI elements. 
+
+Use a tool utility for merging the strings files since Xcode lacks this important feature.
+
+**[⬆ back to top](#table-of-contents)**
+
 ## Project structure
 
 When structuring your Xcode project, follow this template:
@@ -466,8 +476,14 @@ Project
     	⌞ Example view 2
     AppDelegate.swift
 ⌞ resources
+	⌞ Fonts
+    ⌞ Video
+    ⌞ Audio
+    ⌞ Images
+    ⌞ HTML
 Main.storyboard
 Launchscreen.xib
+Images.xcassets
 ```
 
 ### Services
@@ -491,7 +507,7 @@ DownloadManager
 
 Place your model files here; for example any database *ORM* models. Model files should contain no business logic but only represent data.
 
-If your application needs to hold global state, put it into a class called *AppModel* and access it via a singleton instance. Sometimes it is handy to alias *AppModel*'s properties onto *NSUserDefaults* via computed properties.
+If your application needs to hold global state, put it into a class called *AppState* and access it via a singleton instance. Sometimes it is handy to alias *AppState*'s properties onto *NSUserDefaults* via computed properties.
 
 ### Custom controls
 
@@ -499,10 +515,14 @@ If creating subclasses of UIKit view controls, place them here.
 
 ### Utils
 
-Put any source files containing global functions and [extensions]((https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html) here.
+Put any source files containing global functions and [extensions](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html) here.
 
 ### View controllers
 
 Create a subgroup for each view. Place any related .xib files and their implementation files to the same subgroup as the view controller that uses them. If reusing .xibs in several views, create a group called *Common* for them.
+
+### Resources
+
+Put any resources files into subgroups under *Resources*. Always put images into *Images.xcassets* - images used from any HTML/WebView are an exception since they cannot be used from *Images.xcassets*.
 
 **[⬆ back to top](#table-of-contents)**
