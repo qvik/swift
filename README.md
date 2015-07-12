@@ -338,7 +338,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 Do not use semicolons at the end of the line.
 
-Do not write conditionals etc. in round brackets: 
+Do not enclose single boolean expressions in round brackets: 
 
 ```swift
 // Bad 
@@ -346,6 +346,19 @@ if ( foo > 0 ) {}
 
 // Good
 if foo > 0 {}
+```
+
+However in the case of multiple boolean expressions, always enclose them in braces to improve readability considering operator precedence. Still avoid enclosing the whole condition in braces:
+
+```swift
+// Bad 
+if foo > 0 && bar > 5 {}
+
+// Bad
+if ( (foo > 0) && (bar > 5) ) {}
+
+// Good
+if (foo > 0) && (bar > 5) {}
 ```
 
 Use type inference instead of defining an explicit type for variables and constants:
