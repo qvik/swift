@@ -1,8 +1,8 @@
 # Qvik's Swift language style guide
 
-*[Qvik](http://qvik.fi/)'s official Swift programming language / Swift iOS project guide. This document is used as the basis for any code reviewing and pull request acceptance. For the Swift language specification, see [Apple's The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)*
+*[Qvik](http://qvik.fi/en/)'s official Swift programming language / Swift iOS project guide. This document is used as the basis for any code reviewing and pull request acceptance. For the Swift language specification, see [Apple's The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)*
 
-[![Visit Qvik's webpage](http://qvik.fi/wp-content/uploads/2015/02/qvik_logo_black_210x120.png)](http://qvik.fi/)
+[![Visit Qvik's webpage](http://qvik.fi/wp-content/uploads/2015/02/qvik_logo_black_210x120.png)](http://qvik.fi/en/)
 
 ## Table of Contents
 
@@ -19,6 +19,7 @@
 	* [Closures](#closures)
 4. [Access modifiers](#access-modifiers)
 5. [Computed properties](#computed-properties)
+6. [Asserts](#asserts)
 6. [Braces](#braces)
 7. [Optionals](#optionals)
 8. [Singletons](#singletons)
@@ -33,6 +34,7 @@
 	* [Utils](#utils)
 	* [View controllers](#view-controllers)
 	* [Resources](#resources)
+7. [Authors](#authors)
 		
 	
 
@@ -205,7 +207,7 @@ Always remember to manage your references properly with closures; strongly refer
 ```swift
 // Bad 
 let weak weakSelf = self
-cell.update(loginCallback: { [weak self] in
+cell.update(loginCallback: { in
   weakSelf?.performSegueWithIdentifier(segueIdSideMenuToLogin, sender: self)
 })
 
@@ -240,6 +242,14 @@ var area: Double {
 	return x * y
 }
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+## Asserts 
+
+Using *assert()* for nil-checks should not be used with Swift code; instead use non-optional method parameters to force non-nilness.
+
+For other purposes *assert()* is OK. Note that Swift *assert()* does nothing in Release builds.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -526,3 +536,13 @@ Create a subgroup for each view. Place any related .xib files and their implemen
 Put any resources files into subgroups under *Resources*. Always put images into *Images.xcassets* - images used from any HTML/WebView are an exception since they cannot be used from *Images.xcassets*.
 
 **[⬆ back to top](#table-of-contents)**
+
+## Authors
+
+The following people authored / contributed to this document.
+
+* [Matti Dahlbom](mailto:matti@qvik.fi)
+* [Jerry Jalava](mailto:jerry@qvik.fi)
+
+**[⬆ back to top](#table-of-contents)**
+
