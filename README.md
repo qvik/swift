@@ -26,6 +26,7 @@
 9. [Misc things](#misc-things)
 10. [Shorthands](#shorthands)
 11. [Tuples](#tuples)
+12. [IBDesignable](#@ibdesignable)
 5. [Comments](#comments)
 6. [Project structure](#project-structure)
 	* [Services](#services)
@@ -428,6 +429,31 @@ menuItems = [("menu_icon_card", "sidemenu-loyaltyBenefits", true),
 ```
 
 For public APIs, prefer returning objects of declared types instead, or at least use a typealias for your tuple.
+
+**[⬆ back to top](#table-of-contents)**
+
+## @IBDesignable
+
+Whenever writing custom views / UIControls, make them @IBDesignable so that they get rendered in the Interface Builder to look like they would runtime. Format the code as you would with Java annotations:
+
+
+```swift
+/**
+Class documentation..
+*/
+@IBDesignable
+class MyView : UIView {
+    /// Documentation for my property ..
+    @IBInspectable
+    var myProperty = 0
+  
+    /// Documentation for another property
+    @IBInspectable
+    var myOtherProperty = "foo"
+    
+    ...
+}
+```
 
 **[⬆ back to top](#table-of-contents)**
 
