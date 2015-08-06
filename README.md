@@ -26,6 +26,7 @@
 9. [Misc things](#misc-things)
 10. [Shorthands](#shorthands)
 11. [Tuples](#tuples)
+12. [Typealiases](#typealiases)
 12. [IBDesignable](#@ibdesignable)
 5. [Comments](#comments)
 6. [Project structure](#project-structure)
@@ -432,6 +433,23 @@ For public APIs, prefer returning objects of declared types instead, or at least
 
 **[⬆ back to top](#table-of-contents)**
 
+## Typealiases
+
+Use ```typealias``` to describe complex types such as tuples and in some cases complex closures. Consider, however, that a typealias hides the structure from sight and may thus hinder readability. Use descriptive names as always with any identifier.
+
+Typealiases are named with the first letter of each word capitalized:
+
+```swift
+// Bad 
+typealias fooBar = (foo: String, bar: Int) // camelCase name
+typealias EmptyCallback = (() -> ()) // No point
+
+// Good
+typelias BinaryTreeNode = (value: Int, leftChild: AnyObject?, rightChild: AnyObject?)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
 ## @IBDesignable
 
 Whenever writing custom views / UIControls, make them @IBDesignable so that they get rendered in the Interface Builder to look like they would runtime. Format the code as you would with Java annotations:
@@ -454,6 +472,9 @@ class MyView : UIView {
     ...
 }
 ```
+
+For more information, read up on it on [NSHipster blog](http://nshipster.com/ibinspectable-ibdesignable/).
+
 
 **[⬆ back to top](#table-of-contents)**
 
