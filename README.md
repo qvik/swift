@@ -184,7 +184,7 @@ StringExtensions
 
 ## IBOutlets
 
-Name your IBOutlet variables in a way that the name includes the type of the control; this is to distinguish them from other class variables. Also always use implicit unwrapping to catch missing outlet bindings immediately by having the app crash. Also always flag your outlets **weak**.
+Name your IBOutlet variables in a way that the name includes the type of the control; this is to distinguish them from other class variables. Also always use implicit unwrapping to catch missing outlet bindings immediately by having the app crash. Also always flag your outlets **weak**. Also by default define your outlets as **private** unless there is a specific reason to expose them to the rest of the module.
 
 ```swift
 // Bad 
@@ -192,8 +192,8 @@ Name your IBOutlet variables in a way that the name includes the type of the con
 @IBOutlet var name: UILabel?
 
 // Good
-@IBOutlet weak var customerImageView: UIImageView!
-@IBOutlet weak var nameLabel: UILabel!
+@IBOutlet private weak var customerImageView: UIImageView!
+@IBOutlet private weak var nameLabel: UILabel!
 ```
 
 **[⬆ back to top](#table-of-contents)**
