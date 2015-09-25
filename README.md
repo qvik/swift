@@ -493,7 +493,9 @@ Use the **// MARK: description** syntax to divide your source files into section
 // MARK: Lifecycle etc. (init, deinit etc)
 ```
 
-Document all your public classes / their methods with [reStructuredText](http://docutils.sourceforge.net/docs/user/rst/quickref.html), the recommended way to document Swift code. Use the **/// Comment here** syntax for single-line documentation.
+Document all your public classes / their methods with the Quick Help documentation syntax. Use Markdown to highlight sample usage code blocks etc. 
+
+For examples, see [http://ericasadun.com/2015/06/14/swift-header-documentation-in-xcode-7/](http://ericasadun.com/2015/06/14/swift-header-documentation-in-xcode-7/)
 
 Example of properly documentated code:
 
@@ -508,9 +510,11 @@ class SomeClass {
 	/**
        This method retrieves a list of registered products.
        
-       :param: modifiedSince Timestamp indicating we only want products 
+       - parameter modifiedSince:Timestamp indicating we only want products 
                changed after this
-       :returns: List of the products
+       - returns: List of the products
+       - Throws: Error.network: Network error
+       - Throws: Error.user: SOE detected
     */
     func getProducts(#modifiedSince: NSDate) -> [Product] {
     	...
@@ -519,6 +523,8 @@ class SomeClass {
 ```
 
 Always start your comment with a capital letter and separate it from the comment marker with a single whitespace as such: **// This is a nicely written comment**.
+
+ Use the **/// Comment here** syntax for single-line documentation.
 
 **[⬆ back to top](#table-of-contents)**
 
