@@ -225,6 +225,12 @@ cell.update(loginCallback: { [weak self] in
 
 Manage your classes' [Access control](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html) properly. Always use **private** for class internal data and methods. Always use **public** for any methods you intend to export from your module.
 
+Use **private(set)** to limit access to a property's setter when applicable:
+
+```swift
+private(set) public var foo: String?
+```
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Computed properties
@@ -257,9 +263,12 @@ For other purposes *assert()* is OK. Note that Swift *assert()* does nothing in 
 
 ## Braces
 
-Follow Java/Javascript-style with placing braces; eg.
+Follow Java/Javascript-style with placing braces; never do one-liners, eg.
 
 ```swift
+// Bar 
+if foo { doStuff() }
+
 // Bad 
 if something {
  	thenDoSomething()
@@ -300,6 +309,20 @@ if let error = error {
 }
 ```
 
+Use **guard** for sanity checking when input is expected to be non-null; eg. 
+
+```swift
+func login(username: String?, password: String?) {
+	guard let username = username, password = password else {
+		log.error("username or password not given!")
+        return
+    }
+        
+    log.debug("Logging in with username = \(username) and a password")
+    remoteService.sendLogin(username: username, password: password)
+}
+```
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Singletons
@@ -318,14 +341,16 @@ class SomeServiceClass {
 }
 ```
 
-Optionally, you may define a global constants for the singleton instances, for example in your AppDelegate:
+Optionally, you may define a global constants for the singleton instances, for example in your AppDelegate. Remember, however, that by doing so you are polluting your global namespace. Therefore you should keep defining global instances to a minimum and name them really carefully. 
+
+Example of global instances and proper naming: 
 
 ```swift
 import UIKit
 import XCGLogger
 
 let log = XCGLogger.defaultInstance()
-let remote = RemoteService.sharedInstance()
+let remoteService = RemoteService.sharedInstance()
 let appstate = AppState.sharedInstance()
 
 @UIApplicationMain
