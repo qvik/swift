@@ -266,7 +266,7 @@ For other purposes *assert()* is OK. Note that Swift *assert()* does nothing in 
 Follow Java/Javascript-style with placing braces; never do one-liners, eg.
 
 ```swift
-// Bar 
+// Bad
 if foo { doStuff() }
 
 // Bad 
@@ -309,7 +309,7 @@ if let error = error {
 }
 ```
 
-Use **guard** for sanity checking when input is expected to be non-null; eg. 
+Use **guard** for sanity checking; eg. 
 
 ```swift
 func login(username: String?, password: String?) {
