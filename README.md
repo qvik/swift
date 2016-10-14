@@ -1,6 +1,6 @@
 # Qvik's Swift language style guide
 
-*[Qvik](http://qvik.fi/en/)'s official Swift programming language / Swift iOS project guide. This document is used as the basis for any code reviewing and pull request acceptance. For the Swift language specification, see [Apple's The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)*
+*[Qvik](http://qvik.fi/en/)'s official Swift programming language / Swift3 iOS project guide. This document is used as the basis for any code reviewing and pull request acceptance. For the Swift language specification, see [Apple's The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)*
 
 [![Visit Qvik's webpage](http://qvik.fi/wp-content/uploads/2015/02/qvik_logo_black_210x120.png)](http://qvik.fi/en/)
 
@@ -127,13 +127,14 @@ class AppState {}
 
 ## Enumerations
 
-Enumerations are named with the first letter of each word capitalized.
+Enumeration types are named in CapitalCase; enumeration values are named in camelCase:
 
 ```swift
 enum Fruit {
-  case Banana
-  case Melon
-  case Apple
+  case banana
+  case melon
+  case apple
+  case calafateBarberry
 }
 ```
 
@@ -223,12 +224,12 @@ cell.update(loginCallback: { [weak self] in
 
 ## Access modifiers
 
-Manage your classes' [Access control](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html) properly. Always use **private** for class internal data and methods. Always use **public** for any methods you intend to export from your module.
+Manage your classes' [Access control](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html) properly. Always use **private** for class internal data and methods. Always use **open** for any methods you intend to export from your module.
 
-Use **private(set)** to limit access to a property's setter when applicable:
+Use **private(set)** and **fileprivate(set)** to limit access to a property's setter when applicable:
 
 ```swift
-private(set) public var foo: String?
+fileprivate(set) public var foo: String?
 ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -331,13 +332,8 @@ The famous *Singleton* (anti)pattern divides opinions, but has proved to be usef
 
 ```swift
 class SomeServiceClass {
-	// Singleton instance
-    private static let singletonInstance = SomeServiceClass()
-    
-    /// Returns the singleton instance
-    class func sharedInstance() -> SomeServiceClass {
-    	return singletonInstance
-    }
+	/// Shared Singleton instance
+    open static let `default` = SomeServiceClass()
 }
 ```
 
@@ -349,9 +345,9 @@ Example of global instances and proper naming:
 import UIKit
 import XCGLogger
 
-let log = XCGLogger.defaultInstance()
-let remoteService = RemoteService.sharedInstance()
-let appstate = AppState.sharedInstance()
+let log = XCGLogger.default
+let remoteService = RemoteService.default
+let appstate = AppState.default
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -360,6 +356,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ```
 
 **[⬆ back to top](#table-of-contents)**
+
+## Error handling
+
+Define your errors in the standard fashion: 
+
+```swift
+    public enum Errors: Error {
+        case serverError(reason: String)
+        case notFound
+        case badResponse(statusCode: Int)
+    }
+
+```
+
+Use the ***throw*** / ***try*** / ***catch*** mechanism when ever feasible. 
+
+**[⬆ back to top](#table-of-contents)**
+
 
 ## Misc things
 
@@ -518,33 +532,26 @@ Use the **// MARK: description** syntax to divide your source files into section
 // MARK: Lifecycle etc. (init, deinit etc)
 ```
 
+## Documenting your code
+
 Document all your public classes / their methods with the Quick Help documentation syntax. Use Markdown to highlight sample usage code blocks etc. 
 
 For examples, see [http://ericasadun.com/2015/06/14/swift-header-documentation-in-xcode-7/](http://ericasadun.com/2015/06/14/swift-header-documentation-in-xcode-7/)
 
-Example of properly documentated code:
+Use the standard code documentation format: 
 
 ```swift
 /**
-   This class provides an API facade for the Acme Inc remote service.
-*/
-class SomeClass {
-	/// Remote API address
-	private var apiAddress: String? = nil
-    
-	/**
-       This method retrieves a list of registered products.
-       
-       - parameter modifiedSince:Timestamp indicating we only want products 
-               changed after this
-       - returns: List of the products
-       - Throws: Error.network: Network error
-       - Throws: Error.user: SOE detected
-    */
-    func getProducts(#modifiedSince: NSDate) -> [Product] {
-    	...
-    }
-}
+ Explanation of what the method does.
+ 
+ - parameter foo: Description of parameter foo
+ - parameter bar: Description of parameter bar
+ - returns: What the method returns
+ - throws: List the excetpions (Errors) what this method might throw and why
+ */
+ open func stuff(foo: Int, bar: String) throws -> String {
+   // ... 
+ }
 ```
 
 Always start your comment with a capital letter and separate it from the comment marker with a single whitespace as such: **// This is a nicely written comment**.
