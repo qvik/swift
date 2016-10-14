@@ -23,6 +23,7 @@
 6. [Braces](#braces)
 7. [Optionals](#optionals)
 8. [Singletons](#singletons)
+8. [Error handling](#error-handling)
 9. [Misc things](#misc-things)
 10. [Shorthands](#shorthands)
 11. [Tuples](#tuples)
@@ -491,28 +492,7 @@ typelias BinaryTreeNode = (value: Int, leftChild: AnyObject?, rightChild: AnyObj
 
 ## @IBDesignable
 
-Whenever writing custom views / UIControls, make them @IBDesignable so that they get rendered in the Interface Builder to look like they would runtime. Format the code as you would with Java annotations:
-
-
-```swift
-/**
-Class documentation..
-*/
-@IBDesignable
-class MyView : UIView {
-    /// Documentation for my property ..
-    @IBInspectable
-    var myProperty = 0
-  
-    /// Documentation for another property
-    @IBInspectable
-    var myOtherProperty = "foo"
-    
-    ...
-}
-```
-
-For more information, read up on it on [NSHipster blog](http://nshipster.com/ibinspectable-ibdesignable/).
+While a fine idea, using @IBDesignable makes IB re-compile the view class(es) every time the view is opened in IB. Not only is this an annoyance, but debugging problems with @IBDesignable views is next to impossible. Therefore using @IBDesignable / @IBInspectable is discouraged until their support is better.
 
 
 **[⬆ back to top](#table-of-contents)**
