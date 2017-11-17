@@ -370,7 +370,7 @@ Define your errors in the standard fashion:
 }
 ```
 
-Use the ***throw*** / ***try*** / ***catch*** mechanism when ever feasible. 
+Use the ***throw*** / ***do*** / ***catch*** mechanism when ever feasible. 
 
 **[⬆ back to top](#table-of-contents)**
 
