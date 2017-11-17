@@ -1,6 +1,6 @@
 # Qvik's Swift language style guide
 
-*[Qvik](http://qvik.fi/en/)'s official Swift programming language / Swift3 iOS project guide. This document is used as the basis for any code reviewing and pull request acceptance. For the Swift language specification, see [Apple's The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)*
+*[Qvik](http://qvik.fi/en/)'s official Swift programming language / Swift4 iOS project guide. This document is used as the basis for any code reviewing and pull request acceptance. For the Swift language specification, see [Apple's The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)*
 
 [![Visit Qvik's webpage](http://qvik.fi/wp-content/uploads/2015/02/qvik_logo_black_210x120.png)](http://qvik.fi/en/)
 
@@ -142,7 +142,7 @@ enum Fruit {
 Use the shorthand expression (when possible) when dealing with enumerations:
 
 ```swift
-picnicBasket.fruit = .Apple
+picnicBasket.fruit = .apple
 ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -175,7 +175,7 @@ reverseString(myString)
 
 ## Extensions
 
-When writing [extensions](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html), name your sources with *Extensions* prefix as such:
+When writing [extensions](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html), name your sources with *Extensions* suffix as such:
 
 ```swift
 UIViewExtensions
@@ -240,16 +240,16 @@ fileprivate(set) public var foo: String?
 Always use computed properties instead of writing getter/setter -like methods. If a computed property is read-only, omit the **get {}** as such:
 
 ```swift
-// Bad 
+// Bad
 var area: Double {
-	get {
-		return x * y
+    get {
+        return x * y
     }
 }
 
 // Good
 var area: Double {
-	return x * y
+    return x * y
 }
 ```
 
@@ -273,17 +273,17 @@ if foo { doStuff() }
 
 // Bad 
 if something {
- 	thenDoSomething()
+    thenDoSomething()
 } 
 else {
-	doSomethingElse()
+    doSomethingElse()
 }
 
 // Good
 if something {
- 	thenDoSomething()
+    thenDoSomething()
 } else {
-	doSomethingElse()
+    doSomethingElse()
 }
 ```
 
@@ -302,12 +302,12 @@ For [Optional Binding](https://developer.apple.com/library/ios/documentation/Swi
 ```swift
 // Bad 
 if let unwrappedError = error {
-	...
+    // ...
 }
 
 // Good
 if let error = error {
-	...
+    // ...
 }
 ```
 
@@ -315,11 +315,11 @@ Use **guard** for sanity checking; eg.
 
 ```swift
 func login(username: String?, password: String?) {
-	guard let username = username, password = password else {
-		log.error("username or password not given!")
+    guard let username = username, password = password else {
+        log.error("username or password not given!")
         return
     }
-        
+    
     log.debug("Logging in with username = \(username) and a password")
     remoteService.sendLogin(username: username, password: password)
 }
@@ -333,7 +333,7 @@ The famous *Singleton* (anti)pattern divides opinions, but has proved to be usef
 
 ```swift
 class SomeServiceClass {
-	/// Shared Singleton instance
+    /// Shared Singleton instance
     open static let `default` = SomeServiceClass()
 }
 ```
@@ -352,7 +352,7 @@ let appstate = AppState.default
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-	...
+    // ...
 }
 ```
 
@@ -363,15 +363,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 Define your errors in the standard fashion: 
 
 ```swift
-    public enum Errors: Error {
-        case serverError(reason: String)
-        case notFound
-        case badResponse(statusCode: Int)
-    }
-
+ public enum Errors: Error {
+    case serverError(reason: String)
+    case notFound
+    case badResponse(statusCode: Int)
+}
 ```
 
-Use the ***throw*** / ***try*** / ***catch*** mechanism when ever feasible. 
+Use the ***throw*** / ***do*** / ***catch*** mechanism when ever feasible. 
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -420,9 +419,9 @@ Use the **??** shorthand operator for nil-comparisons:
 ```swift
 // Bad 
 if foo == nil {
-	bar = "default"
+    bar = "default"
 } else {
-	bar = foo
+    bar = foo
 }
 
 // Bad 
@@ -443,15 +442,15 @@ Always use shorthands for computed properties:
 ```swift
 // Bad 
 var foo: String? {
-	set(newFoo) {
-    	data.foo = newFoo
+    set(newFoo) {
+        data.foo = newFoo
     }
 }
 
 // Good
 var foo: String? {
-	set {
-    	data.foo = newValue
+    set {
+        data.foo = newValue
     }
 }
 ```
@@ -530,7 +529,7 @@ Use the standard code documentation format:
  - throws: List the excetpions (Errors) what this method might throw and why
  */
  open func stuff(foo: Int, bar: String) throws -> String {
-   // ... 
+     // ...
  }
 ```
 
@@ -555,16 +554,16 @@ When structuring your Xcode project, follow this template:
 ```
 Project
 ⌞ src
-	⌞  Services
-	⌞  Models
-	⌞  Custom controls
-	⌞  Utils
-	⌞  View controllers
-    	⌞ Example view 1
-    	⌞ Example view 2
+    ⌞  Services
+    ⌞  Models
+    ⌞  Custom controls
+    ⌞  Utils
+    ⌞  View controllers
+        ⌞ Example view 1
+        ⌞ Example view 2
     AppDelegate.swift
 ⌞ resources
-	⌞ Fonts
+    ⌞ Fonts
     ⌞ Video
     ⌞ Audio
     ⌞ Images
@@ -621,6 +620,7 @@ The following people authored / contributed to this document.
 
 * [Matti Dahlbom](mailto:matti@qvik.fi)
 * [Jerry Jalava](mailto:jerry@qvik.fi)
+* [Otávio Lima](mailto:otavio@qvik.fi)
 
 **[⬆ back to top](#table-of-contents)**
 
