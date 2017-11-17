@@ -175,7 +175,7 @@ reverseString(myString)
 
 ## Extensions
 
-When writing [extensions](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html), name your sources with *Extensions* prefix as such:
+When writing [extensions](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html), name your sources with *Extensions* suffix as such:
 
 ```swift
 UIViewExtensions
