@@ -142,7 +142,7 @@ enum Fruit {
 Use the shorthand expression (when possible) when dealing with enumerations:
 
 ```swift
-picnicBasket.fruit = .Apple
+picnicBasket.fruit = .apple
 ```
 
 **[⬆ back to top](#table-of-contents)**
