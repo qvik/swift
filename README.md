@@ -240,16 +240,16 @@ fileprivate(set) public var foo: String?
 Always use computed properties instead of writing getter/setter -like methods. If a computed property is read-only, omit the **get {}** as such:
 
 ```swift
-// Bad 
+// Bad
 var area: Double {
-	get {
-		return x * y
+    get {
+        return x * y
     }
 }
 
 // Good
 var area: Double {
-	return x * y
+    return x * y
 }
 ```
 
@@ -273,17 +273,17 @@ if foo { doStuff() }
 
 // Bad 
 if something {
- 	thenDoSomething()
+    thenDoSomething()
 } 
 else {
-	doSomethingElse()
+    doSomethingElse()
 }
 
 // Good
 if something {
- 	thenDoSomething()
+    thenDoSomething()
 } else {
-	doSomethingElse()
+    doSomethingElse()
 }
 ```
 
@@ -302,12 +302,12 @@ For [Optional Binding](https://developer.apple.com/library/ios/documentation/Swi
 ```swift
 // Bad 
 if let unwrappedError = error {
-	...
+    ...
 }
 
 // Good
 if let error = error {
-	...
+    ...
 }
 ```
 
@@ -315,11 +315,11 @@ Use **guard** for sanity checking; eg.
 
 ```swift
 func login(username: String?, password: String?) {
-	guard let username = username, password = password else {
-		log.error("username or password not given!")
+    guard let username = username, let password = password else {
+        log.error("username or password not given!")
         return
     }
-        
+    
     log.debug("Logging in with username = \(username) and a password")
     remoteService.sendLogin(username: username, password: password)
 }
@@ -333,7 +333,7 @@ The famous *Singleton* (anti)pattern divides opinions, but has proved to be usef
 
 ```swift
 class SomeServiceClass {
-	/// Shared Singleton instance
+    /// Shared Singleton instance
     open static let `default` = SomeServiceClass()
 }
 ```
@@ -352,7 +352,7 @@ let appstate = AppState.default
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-	...
+    ...
 }
 ```
 
@@ -363,12 +363,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 Define your errors in the standard fashion: 
 
 ```swift
-    public enum Errors: Error {
-        case serverError(reason: String)
-        case notFound
-        case badResponse(statusCode: Int)
-    }
-
+ public enum Errors: Error {
+    case serverError(reason: String)
+    case notFound
+    case badResponse(statusCode: Int)
+}
 ```
 
 Use the ***throw*** / ***try*** / ***catch*** mechanism when ever feasible. 
@@ -420,9 +419,9 @@ Use the **??** shorthand operator for nil-comparisons:
 ```swift
 // Bad 
 if foo == nil {
-	bar = "default"
+    bar = "default"
 } else {
-	bar = foo
+    bar = foo
 }
 
 // Bad 
@@ -443,15 +442,15 @@ Always use shorthands for computed properties:
 ```swift
 // Bad 
 var foo: String? {
-	set(newFoo) {
-    	data.foo = newFoo
+    set(newFoo) {
+        data.foo = newFoo
     }
 }
 
 // Good
 var foo: String? {
-	set {
-    	data.foo = newValue
+    set {
+        data.foo = newValue
     }
 }
 ```
@@ -555,16 +554,16 @@ When structuring your Xcode project, follow this template:
 ```
 Project
 ⌞ src
-	⌞  Services
-	⌞  Models
-	⌞  Custom controls
-	⌞  Utils
-	⌞  View controllers
-    	⌞ Example view 1
-    	⌞ Example view 2
+    ⌞  Services
+    ⌞  Models
+    ⌞  Custom controls
+    ⌞  Utils
+    ⌞  View controllers
+        ⌞ Example view 1
+        ⌞ Example view 2
     AppDelegate.swift
 ⌞ resources
-	⌞ Fonts
+    ⌞ Fonts
     ⌞ Video
     ⌞ Audio
     ⌞ Images
