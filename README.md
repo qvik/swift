@@ -1,6 +1,6 @@
 # Qvik's Swift language style guide
 
-*[Qvik](http://qvik.fi/en/)'s official Swift programming language / Swift3 iOS project guide. This document is used as the basis for any code reviewing and pull request acceptance. For the Swift language specification, see [Apple's The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)*
+*[Qvik](http://qvik.fi/en/)'s official Swift programming language / Swift4 iOS project guide. This document is used as the basis for any code reviewing and pull request acceptance. For the Swift language specification, see [Apple's The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)*
 
 [![Visit Qvik's webpage](http://qvik.fi/wp-content/uploads/2015/02/qvik_logo_black_210x120.png)](http://qvik.fi/en/)
 
