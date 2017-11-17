@@ -168,7 +168,7 @@ sendEmail(recipient, body)
 
 // Good
 sendEmail(recipient: recipient, body: body)
-reverseString(myString)
+parseFrom(string: myString)
 ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -435,7 +435,7 @@ let bar = foo ?? "default"
 
 ## Shorthands
 
-Avoid using closure argument shorthands (**$0, $1, ..**) unless their meaning to the closure is unambiguous.
+Avoid using closure argument shorthands (**$0, $1, ..**) unless their meaning to the closure is unambiguous. This is mostly the case when there is only a single closure argument, for example in a call to a method such as `map()`.
 
 Always use shorthands for computed properties:
 
@@ -566,7 +566,6 @@ Project
     ⌞ Fonts
     ⌞ Video
     ⌞ Audio
-    ⌞ Images
     ⌞ HTML
 Main.storyboard
 Launchscreen.xib
@@ -585,7 +584,6 @@ Examples of *service* and *manager* class names:
 
 ```swift
 RemoteService
-LDAPService
 LocalDataService
 DownloadManager
 ```
