@@ -332,9 +332,9 @@ func login(username: String?, password: String?) {
 The famous *Singleton* (anti)pattern divides opinions, but has proved to be useful in building iOS applications. Use the following way to provide singleton instances:
 
 ```swift
-class SomeServiceClass {
+public class SomeServiceClass {
     /// Shared Singleton instance
-    open static let `default` = SomeServiceClass()
+    public static let `default` = SomeServiceClass()
 }
 ```
 
