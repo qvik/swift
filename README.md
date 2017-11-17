@@ -620,6 +620,7 @@ The following people authored / contributed to this document.
 
 * [Matti Dahlbom](mailto:matti@qvik.fi)
 * [Jerry Jalava](mailto:jerry@qvik.fi)
+* [Otávio Lima](mailto:otavio@qvik.fi)
 
 **[⬆ back to top](#table-of-contents)**
 
