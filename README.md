@@ -302,12 +302,12 @@ For [Optional Binding](https://developer.apple.com/library/ios/documentation/Swi
 ```swift
 // Bad 
 if let unwrappedError = error {
-    ...
+    // ...
 }
 
 // Good
 if let error = error {
-    ...
+    // ...
 }
 ```
 
@@ -315,7 +315,7 @@ Use **guard** for sanity checking; eg.
 
 ```swift
 func login(username: String?, password: String?) {
-    guard let username = username, let password = password else {
+    guard let username = username, password = password else {
         log.error("username or password not given!")
         return
     }
@@ -352,7 +352,7 @@ let appstate = AppState.default
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    ...
+    // ...
 }
 ```
 
@@ -529,7 +529,7 @@ Use the standard code documentation format:
  - throws: List the excetpions (Errors) what this method might throw and why
  */
  open func stuff(foo: Int, bar: String) throws -> String {
-   // ... 
+     // ...
  }
 ```
 
