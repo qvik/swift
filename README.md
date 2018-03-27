@@ -202,7 +202,7 @@ Name your IBOutlet variables in a way that the name includes the type of the con
 
 ## Closures
 
-Closures (aka. lambda expressions) are a powerful feature in modern programming languages. Always use closures instead of *"listener"* / *"observer"* / *"delegate"* patterns for callbacks in your Swift code.
+Closures (aka. lambda expressions) are a powerful feature in modern programming languages. Use closures instead of *"listener"* / *"observer"* / *"delegate"* patterns for callbacks in your Swift code unless there is a really solid reason for doing otherwise.
 
 For a closure syntax cheatsheet, see [http://fuckingclosuresyntax.com/](http://fuckingclosuresyntax.com/).
 
@@ -225,13 +225,15 @@ cell.update(loginCallback: { [weak self] in
 
 ## Access modifiers
 
-Manage your classes' [Access control](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html) properly. Always use **private** for class internal data and methods. Always use **open** for any methods you intend to export from your module.
+Manage your classes' [Access control](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html) properly. Always use **private** for class internal data and methods. Carefully consider any subclassing needs of your module's users when selecting between **public** and **open** for any classes / class members you intend to export from your module.
 
 Use **private(set)** and **fileprivate(set)** to limit access to a property's setter when applicable:
 
 ```swift
 fileprivate(set) public var foo: String?
 ```
+
+Study [Swift Access Control](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html) thoroughly.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -255,7 +257,7 @@ var area: Double {
 
 **[⬆ back to top](#table-of-contents)**
 
-## Asserts 
+## Asserts
 
 Using *assert()* for nil-checks should not be used with Swift code; instead use non-optional method parameters to force non-nilness.
 
@@ -549,6 +551,8 @@ Use a tool utility for merging the strings files since Xcode lacks this importan
 
 ## Project structure
 
+When building your UI, use Storyboards. Split your UI between several Storyboards, consisting of for example between 2 and 5 views each. Put all the views logically belonging to a given UI 'flow' (for example: onboarding flow, login flow, shopping cart checkout flow, etc..) into the same storyboard.
+
 When structuring your Xcode project, follow this template:
 
 ```
@@ -560,7 +564,11 @@ Project
     ⌞  Utils
     ⌞  View controllers
         ⌞ Example view 1
+        	⌞ ViewController1.swift
+        	⌞ Storyboard1.xib
         ⌞ Example view 2
+        	⌞ ViewController2.swift
+        	⌞ Storyboard2.xib
     AppDelegate.swift
 ⌞ resources
     ⌞ Fonts
