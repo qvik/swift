@@ -563,12 +563,15 @@ Project
     ⌞  Custom controls
     ⌞  Utils
     ⌞  View controllers
-        ⌞ Example view 1
-        	⌞ ViewController1.swift
-        	⌞ Storyboard1.xib
-        ⌞ Example view 2
-        	⌞ ViewController2.swift
-        	⌞ Storyboard2.xib
+        ⌞ A View Flow
+        	⌞ Example view 1
+        		⌞ ViewController1.swift
+        		⌞ Storyboard1.xib
+        	⌞ Example view 2
+        		⌞ ViewController2.swift
+        		⌞ Storyboard2.xib
+        ⌞ Another View Flow
+        	⌞ ...
     AppDelegate.swift
 ⌞ resources
     ⌞ Fonts
