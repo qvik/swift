@@ -186,16 +186,16 @@ StringExtensions
 
 ## IBOutlets
 
-Name your IBOutlet variables in a way that the name includes the type of the control; this is to distinguish them from other class variables. Also always use implicit unwrapping to catch missing outlet bindings immediately by having the app crash. Also always flag your outlets **weak**. Also by default define your outlets as **private** unless there is a specific reason to expose them to the rest of the module.
+Name your IBOutlet variables in a way that the name includes the type of the control; this is to distinguish them from other class variables. Also always use implicit unwrapping to catch missing outlet bindings immediately by having the app crash. Also by default define your outlets as **private** unless there is a specific reason to expose them to the rest of the module.
 
 ```swift
-// Bad 
+// Bad
 @IBOutlet var image: UIImageView?
 @IBOutlet var name: UILabel?
 
 // Good
-@IBOutlet private weak var customerImageView: UIImageView!
-@IBOutlet private weak var nameLabel: UILabel!
+@IBOutlet private var customerImageView: UIImageView!
+@IBOutlet private var nameLabel: UILabel!
 ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -391,7 +391,7 @@ if ( foo > 0 ) {}
 if foo > 0 {}
 ```
 
-However in the case of multiple boolean expressions, always enclose them in braces to improve readability considering operator precedence. Still avoid enclosing the whole condition in braces:
+However in the case of multiple boolean expressions, consider enclosing them in braces to improve readability considering operator precedence. Still avoid enclosing the whole condition in braces:
 
 ```swift
 // Bad 
@@ -409,11 +409,11 @@ Use type inference instead of defining an explicit type for variables and consta
 ```swift
 // Bad 
 let message: String = "Hello, world"
-var fruits: [String] = []
 
 // Good
 let message = "Hello, world"
 var fruits = [String]()
+var fruits: [String] = []
 ```
 
 Use the **??** shorthand operator for nil-comparisons:
@@ -437,7 +437,7 @@ let bar = foo ?? "default"
 
 ## Shorthands
 
-Avoid using closure argument shorthands (**$0, $1, ..**) unless their meaning to the closure is unambiguous. This is mostly the case when there is only a single closure argument, for example in a call to a method such as `map()`.
+Use closure argument shorthands (**$0, $1, ..**) when their meaning to the closure is unambiguous. This is mostly the case when there is only a single closure argument, for example in a call to a method such as `map()`.
 
 Always use shorthands for computed properties:
 
@@ -498,6 +498,22 @@ While a fine idea, using @IBDesignable makes IB re-compile the view class(es) ev
 
 **[⬆ back to top](#table-of-contents)**
 
+## Class member organization
+
+Aim for organizing your class members in approximately this order for readability. When everyone organizes their code similarly, things are easier to find.
+
+- Constants
+- IBOutlets
+- Public vars
+- Private vars
+- Computed vars
+- Private methods + initializers
+- Public methods + initializers
+- Protocol method
+- Overridden methods
+
+**[⬆ back to top](#table-of-contents)**
+
 ## Comments
 
 Comment your code. Not too little, not too much; good code is self-documenting, but properly written comments structurize code into logical blocks and improve readability.
@@ -543,7 +559,7 @@ Always start your comment with a capital letter and separate it from the comment
 
 ## Localization
 
-Handle localization (internalization) for UI elements by using Storyboard / .xib localization strings file. Do not put *NSLocalizedString()* calls into code for UI elements. 
+Handle localization (internalization) for UI elements by using Storyboard / .xib localization strings file.
 
 Use a tool utility for merging the strings files since Xcode lacks this important feature.
 
